@@ -1,0 +1,2 @@
+# AI
+ simple AI projects
