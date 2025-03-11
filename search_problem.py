@@ -6,15 +6,19 @@ class Problem():
         self.start_node = start_node
         self.end_node = end_node
 
+    #retrieving graph
     def get_map(self):
         return self.knowledge
 
+    #retrieving start_node
     def get_startNode(self):
         return self.start_node
 
+    #retrieving end_node
     def get_endNode(self):
         return self.end_node
 
+    #action function mapping
     def actionFunc(self, node, actiontype):
         map = self.get_map()
         if node in map:
@@ -26,53 +30,7 @@ class Problem():
             else:
                 return ch_nodes[2]
 
-   
-    def expand_node(self, node):
-        if node.get_action() is not None:
-          
-            for action in node.get_action():
-                leafnode = self.actionFunc(node, action)
-                leafnode.set_parent(node)
-                yield leafnode
-                if(leafnode==self.get_endNode()):
-                    return
-                else:
-                    yield from self.expand_node(leafnode)
-                    
-    
-    def child_list(self, node):
-       
-        return list(self.expand_node(node))
-
-
-    def depth_first_search(self):
-        start_node = self.get_startNode()
-        start_node.set_parent(None)
-        frontier = deque()
-        reached = deque()
-        frontier.append(start_node)
-        reached.append(start_node)
-        count = 0
-        while frontier:
-            node = frontier.popleft()
-            
-            if (node == self.get_endNode()):
-                print(f"Jumlah langkah: {count}")
-                return node
-                
-            else:
-                for x in self.child_list(node):
-                    print(x.get_state())
-                    if (x not in reached):
-                        
-                        reached.append(x)
-                        frontier.append(x)
-                        count+=1
-                        
-        else:
-            return None
-
-
+   #Depth-First Search Implementation    
     def DFS(self, map, node, reached=None, result=None):
         
         if reached is None:
@@ -99,7 +57,7 @@ class Problem():
 
         return result, False
   
-
+    #Breadth-First Search Implementation
     def BFS(self, map, node):
         
         reached = set()
