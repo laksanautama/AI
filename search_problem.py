@@ -124,6 +124,7 @@ class Node():
 
 
 def main():
+    
     node_0 = Node("A", ["turnLeft", "goStraight"])
     node_1 = Node("B", ["turnLeft", "goStraight", "turnRight"])
     node_2 = Node("C", ["turnLeft", "goStraight"])
