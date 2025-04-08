@@ -1,2 +1,2 @@
 # AI
- simple AI projects
+Python code implementation for searching problem. 
